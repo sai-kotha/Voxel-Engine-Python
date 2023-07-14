@@ -14,6 +14,8 @@ class ShaderProgram:
         # pass projection and identity model matrix
         self.chunk['m_proj'].write(self.player.m_proj)
         self.chunk['m_model'].write(glm.mat4())
+        # specify texture unit
+        self.chunk['u_texture_0'] = 0
 
     def update(self):
         # when updating pass the view matrix
