@@ -3,14 +3,15 @@
 layout (location = 0) in uint packed_data;
 
 int x, y, z;
-int voxel_id;
-int face_id;
 int ao_id;
 int flip_id;
 
 uniform mat4 m_proj;
 uniform mat4 m_view;
 uniform mat4 m_model;
+
+flat out int voxel_id;
+flat out int face_id;
 
 out vec3 voxel_color;
 out vec2 uv;
@@ -29,7 +30,7 @@ const vec2 uv_coords[4] = vec2[4](vec2(0, 0), vec2(0, 1), vec2(1,0), vec2(1, 1))
 const int uv_indices[24] = int[24](
     1, 0, 2, 1, 2, 3,   // text coord indices for vertices of an even face
     3, 0, 2, 3, 1, 0,    // odd face
-    3, 1, 0, 3, 0, 3,    // even flipped face
+    3, 1, 0, 3, 0, 2,    // even flipped face
     1, 2, 3, 1, 0, 2    // odd flipped face
 );
 
